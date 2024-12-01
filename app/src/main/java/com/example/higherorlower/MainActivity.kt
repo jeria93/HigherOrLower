@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.higherorlower.databinding.ActivityMainBinding
+import kotlinx.coroutines.flow.combine
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +22,55 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        binding.startGame.setOnClickListener {
+            val deck = createDeck()
+            showRandomImage(deck)
+
+        }
     }
+
+    fun showRandomImage(deck: List<Card>) {
+        val randomCard = showRandomCardImage(deck)
+        val cardIdRes = showCardImage(randomCard)
+        binding.imageView2.setImageResource(cardIdRes)
+    }
+}
+
+
+
+
+fun showRandomCardImage(deck: List<Card>) : Card{
+    return deck.random()
+}
+
+//Finds image by (suit, value), returns it for later usage
+fun showCardImage(card: Card) : Int {
+    val resourceName = "card_${card.suit}_${card.value}"
+    return card.cardMap[resourceName] ?: R.drawable.cards_deck //if card image not found, set a default card
+}
+
+//Creates new fresh deck
+fun createDeck(): MutableList<Card>  {
+
+//    suits and values
+    val suits = listOf("clubs", "heart", "spade", "diamond")
+    val values = 1..13
+
+//    Create new empty deck
+    val newDeck = mutableListOf<Card>()
+
+//    Loop suits and values, add to the new deck
+    for (suit in suits) {
+        for (value in values) {
+            newDeck.add(Card(suit, value))
+        }
+
+    }
+
+//    newDeck.shuffle() ?
+
+    return newDeck
 }
 
 //TODO
