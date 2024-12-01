@@ -1,6 +1,5 @@
 package com.example.higherorlower
 
-import android.animation.ObjectAnimator
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +10,7 @@ import com.example.higherorlower.databinding.ActivityStartGameBinding
 class StartGameActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityStartGameBinding
+    var score = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,18 +23,37 @@ class StartGameActivity : AppCompatActivity() {
             insets
         }
 
-        showRandomCards()
+        showTwoNewRandomCards()
 
         binding.btnHigher.setOnClickListener {
 
-            showRandomImage()
+            val leftCard = binding.imageLeftCard.tag as Card
+            val rightCard = binding.imageRightCard.tag as Card
 
+            if (leftCard.value > rightCard.value) {
+                updateScore(true)
+            } else {
+                updateScore(false)
+            }
+            showTwoNewRandomCards()
+        }
 
+        binding.btnLow.setOnClickListener {
+
+            val leftCard = binding.imageLeftCard.tag as Card
+            val rightCard = binding.imageRightCard.tag as Card
+
+            if (leftCard.value < rightCard.value) {
+                updateScore(true)
+            } else {
+                updateScore(false)
+            }
+            showTwoNewRandomCards()
         }
 
     }
 
-    private fun showRandomCards() {
+    private fun showTwoNewRandomCards() {
 
         val deck = DataManager.createDeck()
 
@@ -56,6 +75,15 @@ class StartGameActivity : AppCompatActivity() {
         val randomCard = deck.random()
         val cardIdRes = DataManager.showCardImage(randomCard)
         binding.imageLeftCard.setImageResource(cardIdRes)
+    }
+
+    private fun updateScore(isCorrect: Boolean) {
+
+        if (isCorrect) {
+            score += 1
+            binding.tvScore.text = "Score: $score"
+        }
+
     }
 
 
