@@ -2,6 +2,8 @@ package com.example.higherorlower
 
 object DataManager {
 
+    val currentCard: Card? = null
+
 
 
     //maps out the name of the card as a string to the resource file added
@@ -101,12 +103,4 @@ object DataManager {
         val resourceName = "card_${card.suit}_${card.value}"
         return cardMap[resourceName] ?: R.drawable.cards_deck //if card image not found, set a default card
     }
-
-
-
-
-
-
-
-
 }

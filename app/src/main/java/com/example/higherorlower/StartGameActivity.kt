@@ -23,6 +23,8 @@ class StartGameActivity : AppCompatActivity() {
             insets
         }
 
+        showRandomCards()
+
         binding.btnHigher.setOnClickListener {
 
             showRandomImage()
@@ -32,11 +34,28 @@ class StartGameActivity : AppCompatActivity() {
 
     }
 
+    private fun showRandomCards() {
+
+        val deck = DataManager.createDeck()
+
+        val leftCard = deck.random()
+        val rightCard = deck.random()
+
+        val leftCardIdRes = DataManager.showCardImage(leftCard)
+        binding.imageLeftCard.setImageResource(leftCardIdRes)
+        binding.imageLeftCard.tag = leftCard
+
+        val rightCardIdRes = DataManager.showCardImage(rightCard)
+        binding.imageRightCard.setImageResource(rightCardIdRes)
+        binding.imageRightCard.tag = rightCard
+
+    }
+
     private fun showRandomImage() {
         val deck = DataManager.createDeck()
         val randomCard = deck.random()
         val cardIdRes = DataManager.showCardImage(randomCard)
-        binding.imageViewCard.setImageResource(cardIdRes)
+        binding.imageLeftCard.setImageResource(cardIdRes)
     }
 
 

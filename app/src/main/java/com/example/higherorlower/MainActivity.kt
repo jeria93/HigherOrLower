@@ -93,7 +93,8 @@ class MainActivity : AppCompatActivity() {
 // this way you COULD / be able to extract the images in resource file/package "drawable"
 // needs to match exactly this the format card_heart_13
 // When game activity starts -> first card that shows up, needs to be set with a value, else no point
-// Use the mapof() in Card() to make function that searches for resource files(?)
+// Use the map of() in Card() to make function that searches for resource files(?)
 // Before hand in - double check everything is good, change sizes, strings etc etc to resources in XML, make the design look as in concept,
 // do debugging, try all possible cases for bugs/possible crashes.
 // Make properties private the ones that can be it
+// Remove unnecessary empty spaces

@@ -9,25 +9,25 @@
     tools:context=".StartGameActivity">
 
     <ImageView
-        android:id="@+id/imageViewCard"
+        android:id="@+id/image_left_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
         android:layout_marginTop="133dp"
         android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintEnd_toStartOf="@+id/image_right_card"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/card_diamond_10" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/image_right_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewCard"
+        app:layout_constraintBottom_toBottomOf="@+id/image_left_card"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewCard"
-        app:layout_constraintTop_toTopOf="@+id/imageViewCard"
+        app:layout_constraintStart_toEndOf="@+id/image_left_card"
+        app:layout_constraintTop_toTopOf="@+id/image_left_card"
         app:srcCompat="@drawable/back_card" />
 
     <Button
