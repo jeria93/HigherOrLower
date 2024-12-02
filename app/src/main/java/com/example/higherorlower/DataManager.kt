@@ -81,7 +81,7 @@ object DataManager {
     fun createDeck() : MutableList<Card> {
 
 //    suits and values
-        val suits: List<String> = listOf("clubs", "heart", "spade", "diamond")
+        val suits: List<String> = listOf("club", "heart", "spade", "diamond")
         val values = 1..13
 
         val newDeck = mutableListOf<Card>()
@@ -103,7 +103,21 @@ object DataManager {
         val resourceName = "card_${card.suit}_${card.value}"
 
 
-//                                          change this to a random card maybe?
+//        if (image == null) {
+//            println("Image not found")
+//        } else {
+//            return image
+//        }
+//
+
+
+//                                       add a joker card instead,looks more nice
         return cardMap[resourceName] ?: R.drawable.cards_deck //if card image not found, set a default card
     }
+
+    override fun toString(): String {
+        return "DataManager(currentCard=$currentCard, cardMap=$cardMap)"
+    }
+
+
 }

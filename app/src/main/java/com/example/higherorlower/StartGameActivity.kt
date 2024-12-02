@@ -1,6 +1,7 @@
 package com.example.higherorlower
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,6 +12,7 @@ class StartGameActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityStartGameBinding
     var score = 0
+    val remainingCards = 52
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +53,9 @@ class StartGameActivity : AppCompatActivity() {
             showTwoNewRandomCards()
         }
 
+        binding.gameProgressbar.max = 52
+        binding.gameProgressbar.progress = remainingCards
+
     }
 
     private fun showTwoNewRandomCards() {
@@ -58,6 +63,8 @@ class StartGameActivity : AppCompatActivity() {
         val deck = DataManager.createDeck()
 
         val leftCard = deck.random()
+        deck.remove(leftCard)
+
         val rightCard = deck.random()
 
         val leftCardIdRes = DataManager.showCardImage(leftCard)
@@ -65,8 +72,12 @@ class StartGameActivity : AppCompatActivity() {
         binding.imageLeftCard.tag = leftCard
 
         val rightCardIdRes = DataManager.showCardImage(rightCard)
-        binding.imageRightCard.setImageResource(rightCardIdRes)
+        binding.imageRightCard.setImageResource(R.drawable.back_card)
         binding.imageRightCard.tag = rightCard
+
+        Log.e("!!!", "Left card suit= ${leftCard.suit}, value= ${leftCard.value}")
+        Log.e("!!!", "Right card suit= ${rightCard.suit}, value= ${rightCard.value}")
+
 
     }
 
