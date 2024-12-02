@@ -1,5 +1,6 @@
 package com.example.higherorlower
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -12,7 +13,7 @@ class StartGameActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityStartGameBinding
     var score = 0
-    val remainingCards = 52
+    var remainingCards = 52
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +39,9 @@ class StartGameActivity : AppCompatActivity() {
                 updateScore(false)
             }
             showTwoNewRandomCards()
+            decreaseProgressBars()
+
+//            show toast what card was behind the back image?
         }
 
         binding.btnLow.setOnClickListener {
@@ -51,10 +55,29 @@ class StartGameActivity : AppCompatActivity() {
                 updateScore(false)
             }
             showTwoNewRandomCards()
+            decreaseProgressBars()
+            // show toast what card was behind the back image?
         }
 
         binding.gameProgressbar.max = 52
         binding.gameProgressbar.progress = remainingCards
+
+    }
+
+    fun decreaseProgressBars() {
+
+        if (remainingCards > 0) {
+            remainingCards -= 1
+            binding.gameProgressbar.progress = remainingCards
+        } else if (remainingCards == 0) {
+
+//            new intent to end game (game over screen), send score to game over screen
+            val intent = Intent(this, GameOverActivity::class.java)
+            intent.putExtra("FINAL_SCORE", score)
+            startActivity(intent)
+            println("game over")
+
+        }
 
     }
 

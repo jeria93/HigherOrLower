@@ -79,6 +79,8 @@ class MainActivity : AppCompatActivity() {
 //}
 
 //TODO
+// New "game over activity"- shows when deck is empty -> 0 (shows text, game over, score is "78" or something.) -> button return to home screen
+// implement landscape mode? - research
 // Implement progressbar - research
 // -----------------------------------------------------------------------------------
 // Before hand in - double check everything is good, change sizes, strings etc etc to resources in XML, make the design look as in concept,
