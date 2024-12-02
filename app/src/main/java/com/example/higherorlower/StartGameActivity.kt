@@ -1,6 +1,7 @@
 package com.example.higherorlower
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -65,8 +66,11 @@ class StartGameActivity : AppCompatActivity() {
         binding.imageLeftCard.tag = leftCard
 
         val rightCardIdRes = DataManager.showCardImage(rightCard)
-        binding.imageRightCard.setImageResource(rightCardIdRes)
+        binding.imageRightCard.setImageResource(R.drawable.back_card)
         binding.imageRightCard.tag = rightCard
+
+            Log.e("!!!", "random left card: ${leftCardIdRes.toString()}")
+            Log.e("!!!", "random right card: ${rightCardIdRes.toString()}")
 
     }
 

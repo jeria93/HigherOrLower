@@ -106,4 +106,10 @@ object DataManager {
 //                                          change this to a random card maybe?
         return cardMap[resourceName] ?: R.drawable.cards_deck //if card image not found, set a default card
     }
+
+    override fun toString(): String {
+        return "DataManager(currentCard=$currentCard, cardMap=$cardMap)"
+    }
+
+
 }
