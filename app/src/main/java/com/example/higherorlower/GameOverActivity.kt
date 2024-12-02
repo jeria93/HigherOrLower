@@ -22,8 +22,8 @@ class GameOverActivity : AppCompatActivity() {
             insets
         }
 
-        val finalScore = intent.getIntExtra("FINAL_SCORE", 0)
-        binding.tvFinalScore.text = "Your final score was: $finalScore"
+//        val finalScore = intent.getIntExtra("FINAL_SCORE", 0)
+//        binding.tvFinalScore.text = "Your final score was: $finalScore"
 
 
     }

@@ -73,7 +73,7 @@ class StartGameActivity : AppCompatActivity() {
 
 //            new intent to end game (game over screen), send score to game over screen
             val intent = Intent(this, GameOverActivity::class.java)
-            intent.putExtra("FINAL_SCORE", score)
+//            intent.putExtra("FINAL_SCORE", score)
             startActivity(intent)
             println("game over")
 
