@@ -12,6 +12,7 @@ class StartGameActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityStartGameBinding
     var score = 0
+    val remainingCards = 52
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +53,9 @@ class StartGameActivity : AppCompatActivity() {
             showTwoNewRandomCards()
         }
 
+        binding.gameProgressbar.max = 52
+        binding.gameProgressbar.progress = remainingCards
+
     }
 
     private fun showTwoNewRandomCards() {
@@ -59,6 +63,8 @@ class StartGameActivity : AppCompatActivity() {
         val deck = DataManager.createDeck()
 
         val leftCard = deck.random()
+        deck.remove(leftCard)
+
         val rightCard = deck.random()
 
         val leftCardIdRes = DataManager.showCardImage(leftCard)
@@ -69,8 +75,9 @@ class StartGameActivity : AppCompatActivity() {
         binding.imageRightCard.setImageResource(R.drawable.back_card)
         binding.imageRightCard.tag = rightCard
 
-            Log.e("!!!", "random left card: ${leftCardIdRes.toString()}")
-            Log.e("!!!", "random right card: ${rightCardIdRes.toString()}")
+        Log.e("!!!", "Left card suit= ${leftCard.suit}, value= ${leftCard.value}")
+        Log.e("!!!", "Right card suit= ${rightCard.suit}, value= ${rightCard.value}")
+
 
     }
 
