@@ -40,6 +40,8 @@ class StartGameActivity : AppCompatActivity() {
             }
             showTwoNewRandomCards()
             decreaseProgressBars()
+
+//            show toast what card was behind the back image?
         }
 
         binding.btnLow.setOnClickListener {
@@ -54,6 +56,7 @@ class StartGameActivity : AppCompatActivity() {
             }
             showTwoNewRandomCards()
             decreaseProgressBars()
+            // show toast what card was behind the back image?
         }
 
         binding.gameProgressbar.max = 52
@@ -68,8 +71,9 @@ class StartGameActivity : AppCompatActivity() {
             binding.gameProgressbar.progress = remainingCards
         } else if (remainingCards == 0) {
 
-//            new intent to end game (game over screen)
+//            new intent to end game (game over screen), send score to game over screen
             val intent = Intent(this, GameOverActivity::class.java)
+            intent.putExtra("FINAL_SCORE", score)
             startActivity(intent)
             println("game over")
 
