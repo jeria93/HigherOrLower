@@ -1,5 +1,6 @@
 package com.example.higherorlower
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -68,6 +69,8 @@ class StartGameActivity : AppCompatActivity() {
         } else if (remainingCards == 0) {
 
 //            new intent to end game (game over screen)
+            val intent = Intent(this, GameOverActivity::class.java)
+            startActivity(intent)
             println("game over")
 
         }
