@@ -2,10 +2,8 @@ package com.example.higherorlower
 
 object DataManager {
 
-    val currentCard: Card? = null
-
-
-
+    var score = 0
+    var remainingCards = 52
     //maps out the name of the card as a string to the resource file added
     /*
     "card_heart_1" to R.drawable.card_heart_1 = (key) to (value)
@@ -115,9 +113,9 @@ object DataManager {
         return cardMap[resourceName] ?: R.drawable.cards_deck //if card image not found, set a default card
     }
 
-    override fun toString(): String {
-        return "DataManager(currentCard=$currentCard, cardMap=$cardMap)"
-    }
+//    override fun toString(): String {
+//        return "DataManager(currentCard=$currentCard, cardMap=$cardMap)"
+//    }
 
 
 }

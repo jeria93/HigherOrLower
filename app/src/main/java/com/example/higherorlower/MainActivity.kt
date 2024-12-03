@@ -24,61 +24,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.startGame.setOnClickListener {
-//            val deck = DataManager.createDeck()
-//
-//            showRandomImage(deck)
-
             val intent = Intent(this, StartGameActivity::class.java)
             startActivity(intent)
 
         }
     }
 
-//    fun showRandomImage(deck: MutableList<Card>) {
-//
-//        val randomCard = deck.random()
-//        val cardIdRes = DataManager.showCardImage(randomCard)
-//        binding.imageView2.setImageResource(cardIdRes)
-//    }
 }
 
 
-
-////Is not needed ?
-//fun showRandomCardImage(deck: List<Card>) : Card{
-//    return deck.random()
-//}
-//
-////Finds image by (suit, value), returns it for later usage
-//fun showCardImage(card: Card) : Int {
-//    val resourceName = "card_${card.suit}_${card.value}"
-//    return card.cardMap[resourceName] ?: R.drawable.cards_deck //if card image not found, set a default card
-//}
-//
-////Creates new fresh deck
-//fun createDeck(): MutableList<Card>  {
-//
-////    suits and values
-//    val suits = listOf("clubs", "heart", "spade", "diamond")
-//    val values = 1..13
-//
-////    Create new empty deck
-//    val newDeck = mutableListOf<Card>()
-//
-////    Loop suits and values, add to the new deck
-//    for (suit in suits) {
-//        for (value in values) {
-//            newDeck.add(Card(suit, value))
-//        }
-//
-//    }
-//
-//    newDeck.shuffle()
-//
-//    return newDeck
-//}
-
 //TODO
+// Create custom toast to show which card was hiding behind the deck.
 // New "game over activity"- shows when deck is empty -> 0 (shows text, game over, score is "78" or something.) -> button return to home screen
 // implement landscape mode? - research
 // Implement progressbar - research
