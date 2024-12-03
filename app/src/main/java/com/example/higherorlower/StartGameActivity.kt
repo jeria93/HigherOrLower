@@ -3,12 +3,15 @@ package com.example.higherorlower
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.higherorlower.databinding.ActivityStartGameBinding
+import com.example.higherorlower.databinding.CustomToastBinding
 
 class StartGameActivity : AppCompatActivity() {
 
@@ -43,7 +46,9 @@ class StartGameActivity : AppCompatActivity() {
             decreaseProgressBars()
 
             // show toast what card was hiding behind the back image?
-            Toast.makeText(this, "Hiding card was: ${rightCard.suit} ${rightCard.value}", Toast.LENGTH_LONG).show()
+//            Toast.makeText(this, "Hiding card was: ${rightCard.suit} ${rightCard.value}", Toast.LENGTH_LONG).show()
+            showCustomToast(rightCard, DataManager.showCardImage(rightCard))
+
         }
 
 //        Button-lower logic
@@ -60,7 +65,9 @@ class StartGameActivity : AppCompatActivity() {
             showTwoNewRandomCards()
             decreaseProgressBars()
             // show toast what card was hiding behind the back image?
-            Toast.makeText(this, "Hiding card was: ${rightCard.suit} ${rightCard.value}", Toast.LENGTH_LONG).show()
+//            Toast.makeText(this, "Hiding card was: ${rightCard.suit} ${rightCard.value}", Toast.LENGTH_LONG).show()
+            showCustomToast(rightCard, DataManager.showCardImage(rightCard))
+
         }
 
         binding.gameProgressbar.max = 52
@@ -126,16 +133,41 @@ class StartGameActivity : AppCompatActivity() {
 
 //    TODO Create custom Toast if needed
 
-    fun showCustomToast(card: Card, cardImage: Int) {
+    fun showCustomToast(card: Card, cardImageRes: Int) {
 
 //        inflate layout for custom xml
+        val layout = layoutInflater.inflate(R.layout.custom_toast, null)
 
 //        show layouts elements
+        val cardImage = layout.findViewById<ImageView>(R.id.toast_card_image)
+        val cardTextView = layout.findViewById<TextView>(R.id.toast_card_text)
 
-//        create custom toast and show it, use in buttons
+        cardImage.setImageResource(cardImageRes)
+        cardTextView.text = "Hiding card was: ${card.suit} ${card.value}"
 
+        val showToast = Toast(applicationContext)
+        showToast.duration = Toast.LENGTH_LONG
+        showToast.setView(layout)
+        showToast.show()
 
     }
+
+    fun showCustomToast1(card: Card, cardImageRes: Int) {
+        // Inflate the custom toast layout using view binding
+        val toastBinding = CustomToastBinding.inflate(layoutInflater)
+
+        // Set the image and text in the custom layout
+        toastBinding.toastCardImage.setImageResource(cardImageRes)
+        toastBinding.toastCardText.text = "Hiding card was: ${card.suit} ${card.value}"
+
+        // Create and show the toast
+        Toast(applicationContext).apply {
+            duration = Toast.LENGTH_LONG
+            view = toastBinding.root
+            show()
+        }
+    }
+
 
 
 }
