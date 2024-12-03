@@ -43,9 +43,10 @@ class StartGameActivity : AppCompatActivity() {
             decreaseProgressBars()
 
             // show toast what card was hiding behind the back image?
-            Toast.makeText(this, "Hiding card was: ${rightCard.suit} ${rightCard.value}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Hiding card was: ${rightCard.suit} ${rightCard.value}", Toast.LENGTH_LONG).show()
         }
 
+//        Button-lower logic
         binding.btnLow.setOnClickListener {
 
             val leftCard = binding.imageLeftCard.tag as Card
@@ -59,7 +60,7 @@ class StartGameActivity : AppCompatActivity() {
             showTwoNewRandomCards()
             decreaseProgressBars()
             // show toast what card was hiding behind the back image?
-            Toast.makeText(this, "Hiding card was: ${rightCard.suit} ${rightCard.value}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Hiding card was: ${rightCard.suit} ${rightCard.value}", Toast.LENGTH_LONG).show()
         }
 
         binding.gameProgressbar.max = 52
@@ -67,7 +68,7 @@ class StartGameActivity : AppCompatActivity() {
 
     }
 
-    fun decreaseProgressBars() {
+    private fun decreaseProgressBars() {
 
         if (remainingCards > 0) {
             remainingCards -= 1
@@ -80,7 +81,6 @@ class StartGameActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
             println("game over")
-
 
         }
 
@@ -106,7 +106,6 @@ class StartGameActivity : AppCompatActivity() {
         Log.e("!!!", "Left card suit= ${leftCard.suit}, value= ${leftCard.value}")
         Log.e("!!!", "Right card suit= ${rightCard.suit}, value= ${rightCard.value}")
 
-
     }
 
     private fun showRandomImage() {
@@ -122,6 +121,19 @@ class StartGameActivity : AppCompatActivity() {
             score += 1
             binding.tvScore.text = "Score: $score"
         }
+
+    }
+
+//    TODO Create custom Toast if needed
+
+    fun showCustomToast(card: Card, cardImage: Int) {
+
+//        inflate layout for custom xml
+
+//        show layouts elements
+
+//        create custom toast and show it, use in buttons
+
 
     }
 
