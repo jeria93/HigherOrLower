@@ -3,6 +3,7 @@ package com.example.higherorlower
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -41,7 +42,8 @@ class StartGameActivity : AppCompatActivity() {
             showTwoNewRandomCards()
             decreaseProgressBars()
 
-//            show toast what card was behind the back image?
+            // show toast what card was hiding behind the back image?
+            Toast.makeText(this, "Hiding card was: ${rightCard.suit} ${rightCard.value}", Toast.LENGTH_SHORT).show()
         }
 
         binding.btnLow.setOnClickListener {
@@ -56,7 +58,8 @@ class StartGameActivity : AppCompatActivity() {
             }
             showTwoNewRandomCards()
             decreaseProgressBars()
-            // show toast what card was behind the back image?
+            // show toast what card was hiding behind the back image?
+            Toast.makeText(this, "Hiding card was: ${rightCard.suit} ${rightCard.value}", Toast.LENGTH_SHORT).show()
         }
 
         binding.gameProgressbar.max = 52
@@ -73,9 +76,11 @@ class StartGameActivity : AppCompatActivity() {
 
 //            new intent to end game (game over screen), send score to game over screen
             val intent = Intent(this, GameOverActivity::class.java)
-//            intent.putExtra("FINAL_SCORE", score)
+            intent.putExtra("FINAL_SCORE", score)
             startActivity(intent)
+            finish()
             println("game over")
+
 
         }
 

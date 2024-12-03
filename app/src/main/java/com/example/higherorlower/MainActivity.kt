@@ -79,6 +79,7 @@ class MainActivity : AppCompatActivity() {
 //}
 
 //TODO
+// Create custom toast to show which card was hiding behind the deck.
 // New "game over activity"- shows when deck is empty -> 0 (shows text, game over, score is "78" or something.) -> button return to home screen
 // implement landscape mode? - research
 // Implement progressbar - research
