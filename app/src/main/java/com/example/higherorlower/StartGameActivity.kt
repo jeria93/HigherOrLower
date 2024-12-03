@@ -3,6 +3,7 @@ package com.example.higherorlower
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -11,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.higherorlower.databinding.ActivityStartGameBinding
-import com.example.higherorlower.databinding.CustomToastBinding
+
 
 class StartGameActivity : AppCompatActivity() {
 
@@ -64,8 +65,6 @@ class StartGameActivity : AppCompatActivity() {
             }
             showTwoNewRandomCards()
             decreaseProgressBars()
-            // show toast what card was hiding behind the back image?
-//            Toast.makeText(this, "Hiding card was: ${rightCard.suit} ${rightCard.value}", Toast.LENGTH_LONG).show()
             showCustomToast(rightCard, DataManager.showCardImage(rightCard))
 
         }
@@ -131,9 +130,11 @@ class StartGameActivity : AppCompatActivity() {
 
     }
 
-//    TODO Create custom Toast if needed
+//    TODO check if you can change toast show position in landscape mode
 
     fun showCustomToast(card: Card, cardImageRes: Int) {
+
+//        BINDING FOR CUSTOM TOAST?
 
 //        inflate layout for custom xml
         val layout = layoutInflater.inflate(R.layout.custom_toast, null)
@@ -145,28 +146,18 @@ class StartGameActivity : AppCompatActivity() {
         cardImage.setImageResource(cardImageRes)
         cardTextView.text = "Hiding card was: ${card.suit} ${card.value}"
 
-        val showToast = Toast(applicationContext)
-        showToast.duration = Toast.LENGTH_LONG
-        showToast.setView(layout)
-        showToast.show()
+
+
+        val toast = Toast(this)
+        toast.duration = Toast.LENGTH_SHORT
+        toast.setView(layout)
+
+        toast.setGravity(Gravity.CENTER_HORIZONTAL or Gravity.CENTER_HORIZONTAL, 0, 0)
+        toast.show()
 
     }
 
-    fun showCustomToast1(card: Card, cardImageRes: Int) {
-        // Inflate the custom toast layout using view binding
-        val toastBinding = CustomToastBinding.inflate(layoutInflater)
 
-        // Set the image and text in the custom layout
-        toastBinding.toastCardImage.setImageResource(cardImageRes)
-        toastBinding.toastCardText.text = "Hiding card was: ${card.suit} ${card.value}"
-
-        // Create and show the toast
-        Toast(applicationContext).apply {
-            duration = Toast.LENGTH_LONG
-            view = toastBinding.root
-            show()
-        }
-    }
 
 
 

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HigherOrLower</string>
+    <string name="shows_image">shows image</string>
 </resources>
