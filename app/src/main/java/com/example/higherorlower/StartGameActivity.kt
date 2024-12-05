@@ -11,12 +11,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.higherorlower.databinding.ActivityStartGameBinding
 
 
 class StartGameActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityStartGameBinding
+    lateinit var vm: CardViewModel
+
+
     var score = 0
     var remainingCards = 52
 
@@ -25,11 +30,16 @@ class StartGameActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityStartGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        vm = ViewModelProvider(this)[CardViewModel::class.java]
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        vm.score.observe(this, Observer { score ->
+            binding.tvScore.text = "Score: $score"
+        })
+
 
         showTwoNewRandomCards()
 
@@ -39,9 +49,9 @@ class StartGameActivity : AppCompatActivity() {
             val rightCard = binding.imageRightCard.tag as Card
 
             if (leftCard.value > rightCard.value) {
-                updateScore(true)
+                vm.updateScore(true)
             } else {
-                updateScore(false)
+                vm.updateScore(false)
             }
             showTwoNewRandomCards()
             decreaseProgressBars()
@@ -59,9 +69,9 @@ class StartGameActivity : AppCompatActivity() {
             val rightCard = binding.imageRightCard.tag as Card
 
             if (leftCard.value < rightCard.value) {
-                updateScore(true)
+                vm.updateScore(true)
             } else {
-                updateScore(false)
+                vm.updateScore(false)
             }
             showTwoNewRandomCards()
             decreaseProgressBars()
@@ -81,15 +91,19 @@ class StartGameActivity : AppCompatActivity() {
             binding.gameProgressbar.progress = remainingCards
         } else if (remainingCards == 0) {
 
-//            new intent to end game (game over screen), send score to game over screen
-            val intent = Intent(this, GameOverActivity::class.java)
-            intent.putExtra("FINAL_SCORE", score)
-            startActivity(intent)
-            finish()
-            println("game over")
+
+            gameOverActivity()
 
         }
 
+    }
+
+    private fun gameOverActivity() {
+        val intent = Intent(this, GameOverActivity::class.java)
+        intent.putExtra("FINAL_SCORE", vm.score.value)
+        startActivity(intent)
+        finish()
+        println("game over")
     }
 
     private fun showTwoNewRandomCards() {
@@ -105,7 +119,7 @@ class StartGameActivity : AppCompatActivity() {
         binding.imageLeftCard.setImageResource(leftCardIdRes)
         binding.imageLeftCard.tag = leftCard
 
-        val rightCardIdRes = DataManager.showCardImage(rightCard)
+        val _rightCardIdRes = DataManager.showCardImage(rightCard)
         binding.imageRightCard.setImageResource(R.drawable.back_card)
         binding.imageRightCard.tag = rightCard
 
@@ -121,14 +135,14 @@ class StartGameActivity : AppCompatActivity() {
         binding.imageLeftCard.setImageResource(cardIdRes)
     }
 
-    private fun updateScore(isCorrect: Boolean) {
-
-        if (isCorrect) {
-            score += 1
-            binding.tvScore.text = "Score: $score"
-        }
-
-    }
+//    private fun updateScore(isCorrect: Boolean) {
+//
+//        if (isCorrect) {
+//            score += 1
+//            binding.tvScore.text = "Score: $score"
+//        }
+//
+//    }
 
 //    TODO check if you can change toast show position in landscape mode
 
