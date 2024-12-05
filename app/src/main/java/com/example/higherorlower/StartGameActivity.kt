@@ -21,8 +21,6 @@ class StartGameActivity : AppCompatActivity() {
     lateinit var binding: ActivityStartGameBinding
     lateinit var vm: CardViewModel
 
-
-    var score = 0
     var remainingCards = 52
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,8 +38,13 @@ class StartGameActivity : AppCompatActivity() {
             binding.tvScore.text = "Score: $score"
         })
 
+//        TODO: - There must be a way combine both cards at the same time, Pair?
+        vm.leftCardIdRes.observe(this, Observer { leftImage ->
+            binding.imageLeftCard.setImageResource(leftImage)
+        })
 
-        showTwoNewRandomCards()
+
+        vm.showTwoNewRandomCards()
 
         binding.btnHigher.setOnClickListener {
 
@@ -144,7 +147,7 @@ class StartGameActivity : AppCompatActivity() {
 //
 //    }
 
-//    TODO check if you can change toast show position in landscape mode
+//    TODO check if you can change toast show position in landscape mode, do snackbar instead
 
     fun showCustomToast(card: Card, cardImageRes: Int) {
 
