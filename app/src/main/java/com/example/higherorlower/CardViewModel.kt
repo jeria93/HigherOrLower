@@ -10,6 +10,10 @@ class CardViewModel: ViewModel() {
 
     private var deck: MutableList<Card> = DataManager.createDeck()
 
+
+    private val _leftAndRightCards = MutableLiveData<Pair<Card, Card>>()
+    val leftAndRightCards: LiveData<Pair<Card, Card>> get() = _leftAndRightCards
+
     //    Left and right cards
     private var _leftCard = MutableLiveData<Card>()
     val leftCard: LiveData<Card> get() = _leftCard
@@ -50,6 +54,11 @@ class CardViewModel: ViewModel() {
     }
 
 //    getNewCards
+
+    fun showCards() {
+
+
+    }
 
     fun showTwoNewRandomCards() {
 

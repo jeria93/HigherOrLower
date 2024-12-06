@@ -44,6 +44,8 @@ class StartGameActivity : AppCompatActivity() {
         })
 
 
+
+
         vm.showTwoNewRandomCards()
 
         binding.btnHigher.setOnClickListener {
@@ -57,8 +59,8 @@ class StartGameActivity : AppCompatActivity() {
                 vm.updateScore(false)
             }
             showTwoNewRandomCards()
-            decreaseProgressBars()
-
+//            decreaseProgressBars()
+            vm.decrease()
             // show toast what card was hiding behind the back image?
 //            Toast.makeText(this, "Hiding card was: ${rightCard.suit} ${rightCard.value}", Toast.LENGTH_LONG).show()
             showCustomToast(rightCard, DataManager.showCardImage(rightCard))
@@ -77,7 +79,8 @@ class StartGameActivity : AppCompatActivity() {
                 vm.updateScore(false)
             }
             showTwoNewRandomCards()
-            decreaseProgressBars()
+//            decreaseProgressBars()
+            vm.decrease()
             showCustomToast(rightCard, DataManager.showCardImage(rightCard))
 
         }
@@ -87,6 +90,7 @@ class StartGameActivity : AppCompatActivity() {
 
     }
 
+//    vm - done
     private fun decreaseProgressBars() {
 
         if (remainingCards > 0) {
@@ -100,7 +104,7 @@ class StartGameActivity : AppCompatActivity() {
         }
 
     }
-
+// must be public
     private fun gameOverActivity() {
         val intent = Intent(this, GameOverActivity::class.java)
         intent.putExtra("FINAL_SCORE", vm.score.value)
