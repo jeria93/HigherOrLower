@@ -1,5 +1,6 @@
 package com.example.higherorlower
 
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -39,6 +40,7 @@ class CardViewModel: ViewModel() {
     private var _score = MutableLiveData<Int>(0)
     val score: LiveData<Int> get() = _score
 
+//    change back to 52
     private var _remainingCards = MutableLiveData<Int>(52)
     val remainingCards: LiveData<Int> get() = _remainingCards
 

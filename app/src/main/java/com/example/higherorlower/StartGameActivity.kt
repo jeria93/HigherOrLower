@@ -20,7 +20,7 @@ class StartGameActivity : AppCompatActivity() {
 //    val (count1, count2) = Pair(1,2) -> Not working, can be declared in methods, must be "independent",
 //    would work with
 
-    val names = Pair("Nicholas", "Selma") // -> is independent, one variable with two values
+//    val names = Pair("Nicholas", "Selma") // -> is independent, one variable with two values
 
 //    two variables with two values -> is not going to work in class level, works in methods
 //    val (name1, name2) = names
@@ -54,6 +54,11 @@ class StartGameActivity : AppCompatActivity() {
         vm.remainingCards.observe(this, Observer { remaining ->
             binding.gameProgressbar.max = 52
             binding.gameProgressbar.progress = remaining
+
+            if (remaining == 0) {
+                gameOverActivity()
+            }
+
         })
 
 
@@ -64,7 +69,7 @@ class StartGameActivity : AppCompatActivity() {
 
         binding.btnHigher.setOnClickListener {
 
-            compareCards(false)
+            compareCards(true)
 
 //            val leftCard = binding.imageLeftCard.tag as Card
 //            val rightCard = binding.imageRightCard.tag as Card
@@ -117,36 +122,26 @@ class StartGameActivity : AppCompatActivity() {
     }
 
     private fun compareCards(guess: Boolean) {
+
         val (leftCard, rightCard) = vm.leftAndRightCards.value ?: return
-
-
-
-//        val correctGuess = if (guess) leftCard.value < rightCard.value else leftCard.value > rightCard.value
 
         val correctGuess = if (guess) {
             leftCard.value > rightCard.value
-
         } else {
             leftCard.value < rightCard.value
         }
 
+        if (correctGuess) {
+            vm.updateScore(true)
+        } else {
+            vm.updateScore(false)
+        }
 
-
-        vm.updateScore(correctGuess)
         vm.showTwoNewCards()
         vm.decrease()
         showCustomToast(rightCard, DataManager.showCardImage(rightCard))
 
     }
-
-    private fun compareCardsLow() {
-
-    }
-
-
-
-
-
 
     //TODO check if you can change toast show position in landscape mode, do snack bar instead
     fun showCustomToast(card: Card, cardImageRes: Int) {
