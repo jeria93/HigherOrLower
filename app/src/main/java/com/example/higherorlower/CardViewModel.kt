@@ -11,9 +11,16 @@ class CardViewModel: ViewModel() {
     private var deck: MutableList<Card> = DataManager.createDeck()
 
 
+//    Second improved structure
+//Pairing two values
     private val _leftAndRightCards = MutableLiveData<Pair<Card, Card>>()
     val leftAndRightCards: LiveData<Pair<Card, Card>> get() = _leftAndRightCards
 
+    private val _leftAndRightCardsIdRes = MutableLiveData<Pair<Int, Int>>()
+    val leftAndRightCardsIdRes: LiveData<Pair<Int, Int>> get() = _leftAndRightCardsIdRes
+
+
+//    First structure
     //    Left and right cards
     private var _leftCard = MutableLiveData<Card>()
     val leftCard: LiveData<Card> get() = _leftCard
@@ -53,32 +60,31 @@ class CardViewModel: ViewModel() {
         }
     }
 
-//    getNewCards
-
-    fun showCards() {
-
-
-    }
-
-    fun showTwoNewRandomCards() {
+    fun showTwoNewCards() {
 
         val leftCard = deck.random()
         deck.remove(leftCard)
+
         val rightCard = deck.random()
 
         _leftCard.value = leftCard
         _rightCard.value = rightCard
 
-        _leftCardIdRes.value = DataManager.showCardImage(leftCard)
-        _rightCardIdRes.value = DataManager.showCardImage(rightCard)
-
+        _leftAndRightCards.value = Pair(leftCard, rightCard)
+        _leftAndRightCardsIdRes.value = Pair(
+            DataManager.showCardImage(leftCard),
+            DataManager.showCardImage(rightCard)
+        )
         Log.e("!!!", "Left card suit= ${leftCard.suit}, value= ${leftCard.value}")
         Log.e("!!!", "Right card suit= ${rightCard.suit}, value= ${rightCard.value}")
 
-
     }
 
+//    Implement comparison between cards values method
 
+    fun compareCards(leftCard: Card, rightCard: Card): Boolean {
 
+        return true
+    }
 
 }
