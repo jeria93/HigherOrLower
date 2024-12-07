@@ -117,5 +117,10 @@ object DataManager {
 //        return "DataManager(currentCard=$currentCard, cardMap=$cardMap)"
 //    }
 
+//    new functions shows cards + string help, even out spaces, cards must show in order 1-13, no duplicates
+//    array has methods that shows things in order, numbers or letters
+
+
+
 
 }

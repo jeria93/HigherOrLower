@@ -28,23 +28,25 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+
+        binding.btnRules.setOnClickListener {
+            val intent = Intent(this, RulesActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 }
 
 
 //TODO
-// Fix bugs (same cards can show, score not updated, changing orientation doesn't work, values changes )
+// Make rules activity
+// Activity from game over button = return home
 // Make custom app icon
-// Create custom toast to show which card was hiding behind the deck.
-// New "game over activity"- shows when deck is empty -> 0 (shows text, game over, score is "78" or something.) -> button return to home screen
+// Change toast to snack bar
 // implement landscape mode? - research
-// Implement progressbar - research
 // -----------------------------------------------------------------------------------
 // Before hand in - double check everything is good, change sizes, strings etc etc to resources in XML, make the design look as in concept,
 // do debugging, try all possible cases for bugs/possible crashes.
 // Make properties private, public etc etc the ones that can be it
 // Remove unnecessary empty spaces
 // If there is time, make everything super readable = var score: Int = 0, val suits: List<String> = listOf("clubs", "heart", "spade", "diamond") etc etc
-// Add ViewModel? ONLY IF THERE IS TIME - do research
-// Check all code for refactoring, more readable, less code, use Elvis operator if possible
