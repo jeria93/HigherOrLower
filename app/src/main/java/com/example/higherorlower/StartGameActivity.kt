@@ -48,7 +48,7 @@ class StartGameActivity : AppCompatActivity() {
 
         vm.leftAndRightCardsIdRes.observe(this, Observer { (left,right) ->
             binding.imageLeftCard.setImageResource(left)
-            binding.imageRightCard.setImageResource(right)
+            binding.imageRightCard.setImageResource(R.drawable.back_card)
         })
 
         vm.remainingCards.observe(this, Observer { remaining ->
@@ -61,11 +61,10 @@ class StartGameActivity : AppCompatActivity() {
 
         })
 
-
-
-
-
-        vm.showTwoNewCards()
+        vm.leftAndRightCards.observe(this, Observer { (left,right) ->
+            binding.imageLeftCard.tag = left
+            binding.imageRightCard.tag = right
+        })
 
         binding.btnHigher.setOnClickListener {
 
@@ -88,7 +87,6 @@ class StartGameActivity : AppCompatActivity() {
 
         }
 
-//        Button-lower logic
         binding.btnLow.setOnClickListener {
 
             compareCards(false)
@@ -108,6 +106,10 @@ class StartGameActivity : AppCompatActivity() {
 
         }
 
+        if (vm.leftAndRightCards.value == null) {
+            vm.showTwoNewCards()
+        }
+
 //        binding.gameProgressbar.max = 52
 //        binding.gameProgressbar.progress = remainingCards
 
@@ -121,6 +123,7 @@ class StartGameActivity : AppCompatActivity() {
         println("game over")
     }
 
+//    Move whole method to viewmodel?
     private fun compareCards(guess: Boolean) {
 
         val (leftCard, rightCard) = vm.leftAndRightCards.value ?: return
@@ -143,7 +146,7 @@ class StartGameActivity : AppCompatActivity() {
 
     }
 
-    //TODO check if you can change toast show position in landscape mode, do snack bar instead
+    //TODO check if you can change toast show position in landscape mode, do snack bar instead,move to vm?
     fun showCustomToast(card: Card, cardImageRes: Int) {
 
 //        BINDING FOR CUSTOM TOAST?
