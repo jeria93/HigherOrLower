@@ -117,5 +117,25 @@ object DataManager {
 //        return "DataManager(currentCard=$currentCard, cardMap=$cardMap)"
 //    }
 
+//    new functions shows cards + string help, even out spaces, cards must show in order 1-13, no duplicates
+//    array has methods that shows things in order, numbers or letters
+
+    fun showCardsInOrder() : MutableList<Card> {
+
+        val suits: List<String> = mutableListOf("club", "heart", "spade", "diamond")
+        val values = 1..13
+
+        val newDeck = mutableListOf<Card>()
+
+        for (value in values) {
+            val suit = suits[(value - 1) % suits.size]
+            newDeck.add(Card(suit, value))
+        }
+
+        return newDeck
+
+
+    }
+
 
 }
