@@ -25,8 +25,8 @@ class RulesActivity : AppCompatActivity() {
             insets
         }
 
-        binding.rvContainer.layoutManager = GridLayoutManager(this, 2)
-        binding.rvContainer.adapter = RecycleCardAdapter(DataManager.createDeck())
+        binding.rvContainer.layoutManager = GridLayoutManager(this, 1)
+        binding.rvContainer.adapter = RecycleCardAdapter(DataManager.showCardsInOrder())
 
 
     }

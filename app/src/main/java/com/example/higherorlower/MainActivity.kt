@@ -39,8 +39,6 @@ class MainActivity : AppCompatActivity() {
 
 
 //TODO
-// Make rules activity
-// Activity from game over button = return home
 // Make custom app icon
 // Change toast to snack bar
 // implement landscape mode? - research

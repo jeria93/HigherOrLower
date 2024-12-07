@@ -2,13 +2,14 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+   app:cardBackgroundColor="#36801D"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:background="#36801D"
         android:padding="15dp"
-        android:layout_gravity="center"
         >
 
         <ImageView
@@ -24,10 +25,12 @@
 
         <TextView
             android:id="@+id/card_value"
+           android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
+            android:text="11"
             android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/card_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/card_image"
             app:layout_constraintTop_toTopOf="parent"
