@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
 
 //TODO
+// Fix bugs (same cards can show, score not updated, changing orientation doesn't work, values changes )
 // Make custom app icon
 // Create custom toast to show which card was hiding behind the deck.
 // New "game over activity"- shows when deck is empty -> 0 (shows text, game over, score is "78" or something.) -> button return to home screen
