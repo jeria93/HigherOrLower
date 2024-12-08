@@ -41,7 +41,7 @@ class CardViewModel: ViewModel() {
     val score: LiveData<Int> get() = _score
 
 //    change back to 52
-    private var _remainingCards = MutableLiveData<Int>(52)
+    private var _remainingCards = MutableLiveData<Int>(2)
     val remainingCards: LiveData<Int> get() = _remainingCards
 
 

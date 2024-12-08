@@ -3,6 +3,8 @@ package com.example.higherorlower
 import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
+import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -13,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.higherorlower.databinding.ActivityStartGameBinding
+import com.google.android.material.snackbar.Snackbar
 
 
 class StartGameActivity : AppCompatActivity() {
@@ -37,7 +40,7 @@ class StartGameActivity : AppCompatActivity() {
         binding = ActivityStartGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
         vm = ViewModelProvider(this)[CardViewModel::class.java]
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.game_main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -142,11 +145,43 @@ class StartGameActivity : AppCompatActivity() {
 
         vm.showTwoNewCards()
         vm.decrease()
-        showCustomToast(rightCard, DataManager.showCardImage(rightCard))
+        showCustomSnackBar(rightCard, DataManager.showCardImage(rightCard))
 
     }
 
     //TODO check if you can change toast show position in landscape mode, do snack bar instead,move to vm?
+
+    fun showCustomSnackBar(card: Card, cardImageRes: Int) {
+
+        val parentView = findViewById<View>(R.id.game_main)
+
+
+        val snackBar = Snackbar.make(parentView, "", Snackbar.LENGTH_SHORT)
+
+
+//        Works but complains and have no clue how to fix it
+        val snackBarLayout = snackBar.view as Snackbar.SnackbarLayout
+
+        val customLayout = layoutInflater.inflate(R.layout.custom_snackbar_layout, null)
+
+
+        val cardImage = customLayout.findViewById<ImageView>(R.id.custom_snack_image)
+        val cardTextView = customLayout.findViewById<TextView>(R.id.custom_snack_text)
+        cardImage.setImageResource(cardImageRes)
+        cardTextView.text = "Hiding card was: ${card.suit} ${card.value}"
+
+
+        snackBarLayout.setPadding(0, 0, 0, 0)
+        snackBarLayout.addView(customLayout)
+
+        val position = snackBar.view.layoutParams as FrameLayout.LayoutParams
+        position.gravity = Gravity.CENTER
+        snackBar.view.layoutParams = position
+
+        snackBar.show()
+
+    }
+
     fun showCustomToast(card: Card, cardImageRes: Int) {
 
 //        BINDING FOR CUSTOM TOAST?
@@ -171,6 +206,21 @@ class StartGameActivity : AppCompatActivity() {
         toast.show()
 
     }
+
+//    fun showCustomSnackBar(card: Card, cardImageRes: Int) {
+//
+//        val layout = layoutInflater.inflate(R.layout.custom_snackbar_layout, null)
+//
+//        val cardImage = layout.findViewById<ImageView>(R.id.custom_snack_image)
+//        val cardTextView = layout.findViewById<TextView>(R.id.custom_snack_text)
+//
+//        cardImage.setImageResource(cardImageRes)
+//        cardTextView.text = "Hiding card was: ${card.suit} ${card.value}"
+//
+//        val snackBar = Snackbar.make(layout, cardTextView.toString(), Snackbar.LENGTH_SHORT)
+//        snackBar.setActionTextColor(Color.WHITE)
+//        snackBar.show()
+//    }
 
 
 //    vm - done
