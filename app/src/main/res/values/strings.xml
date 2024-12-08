@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">HigherOrLower</string>
     <string name="shows_image">shows image</string>
+    <string name="rules">Rules</string>
+    <string name="start_game">Start Game</string>
+    <string name="imagetodisplay">imageToDisplay</string>
+    <string name="hiding_card_was">Hiding card was:</string>
+    <string name="image_description">image description</string>
+    <string name="card_value_and_suit">card value and suit</string>
+    <string name="game_over_well_played">Game Over!, well played</string>
+    <string name="return_to_main">Return to main</string>
+    <string name="your_final_score_was">Your final score was:</string>
+    <string name="text_rules">The game uses a traditional deck of 52 cards\nThe deck is shuffled thoroughly\nGuess if the opposite deck is higher or lower,\nkeep going until the deck runs out of cards \nCard ranking: \nCards are ranked from high to low.\nKing (highest), Queen, Jack, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 Ace (lowest)</string>
+    <string name="higher_or_lower">Higher or Lower</string>
+    <string name="higher">Higher</string>
+    <string name="lower">Lower</string>
+    <string name="dummy_data_score">SCORE: 0</string>
+    <string name="image_of_right_card">Image of right card</string>
+    <string name="image_of_left_card">image_of_left_card</string>
+    <string name="_11">11</string>
 </resources>

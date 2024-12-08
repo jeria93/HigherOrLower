@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
 //TODO
 // if time -> refactor app, use fragments?
 // Make custom app icon
-// Change toast to snack bar
 // implement landscape mode? - research
 // -----------------------------------------------------------------------------------
 // Before hand in - double check everything is good, change sizes, strings etc etc to resources in XML, make the design look as in concept,
