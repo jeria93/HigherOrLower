@@ -10,8 +10,7 @@ import com.example.higherorlower.databinding.ActivityRulesBinding
 
 class RulesActivity : AppCompatActivity() {
 
-
-    lateinit var binding: ActivityRulesBinding
+    private lateinit var binding: ActivityRulesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,10 +26,5 @@ class RulesActivity : AppCompatActivity() {
         binding.rvContainer.layoutManager = GridLayoutManager(this, 1)
         binding.rvContainer.adapter = RecycleCardAdapter(DataManager.showCardsInOrder())
 
-
     }
 }
-
-
-//TODO:
-// 1, 2 textviews in card_item? = "= $(card.value).toString()" -> RecycleView

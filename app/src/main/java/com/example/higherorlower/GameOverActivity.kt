@@ -1,5 +1,6 @@
 package com.example.higherorlower
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +10,7 @@ import com.example.higherorlower.databinding.ActivityGameOverBinding
 
 class GameOverActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityGameOverBinding
+    private lateinit var binding: ActivityGameOverBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,9 @@ class GameOverActivity : AppCompatActivity() {
         val finalScore = intent.getIntExtra("FINAL_SCORE", 0)
         binding.tvFinalScore.text = "Your final score was: $finalScore"
 
-
+        binding.btnBackToMenu.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

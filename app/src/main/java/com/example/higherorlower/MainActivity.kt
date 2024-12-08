@@ -37,14 +37,6 @@ class MainActivity : AppCompatActivity() {
 
 }
 
-
-//TODO
-// if time -> refactor app, use fragments?
-// Make custom app icon
-// implement landscape mode? - research
-// -----------------------------------------------------------------------------------
-// Before hand in - double check everything is good, change sizes, strings etc etc to resources in XML, make the design look as in concept,
-// do debugging, try all possible cases for bugs/possible crashes.
-// Make properties private, public etc etc the ones that can be it
-// Remove unnecessary empty spaces
-// If there is time, make everything super readable = var score: Int = 0, val suits: List<String> = listOf("clubs", "heart", "spade", "diamond") etc etc
+//TODO: Things we wish we had time to do
+// fix the snackbar so it looks better, positioning is better
+// move around some more code to the viewmodel and more experimenting with the code
