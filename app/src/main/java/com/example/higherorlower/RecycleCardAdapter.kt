@@ -32,11 +32,6 @@ class RecycleCardAdapter(val cardList: MutableList<Card>): RecyclerView.Adapter<
         holder.cardImage.setImageResource(DataManager.showCardImage(cards))
         holder.cardValue.text = " = ${cards.value}"
 
-//        holder.cardValue.text = cards.value.toString()
-
-
-
     }
-
 
 }

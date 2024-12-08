@@ -1,6 +1,5 @@
 package com.example.higherorlower
 
-import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -22,7 +21,7 @@ class CardViewModel: ViewModel() {
 
 
 //    First structure
-    //    Left and right cards
+    //    Left and right cards/ some can be removed BUT, can be usefully for future improvement
     private var _leftCard = MutableLiveData<Card>()
     val leftCard: LiveData<Card> get() = _leftCard
 
@@ -41,13 +40,13 @@ class CardViewModel: ViewModel() {
     val score: LiveData<Int> get() = _score
 
 //    change back to 52
-    private var _remainingCards = MutableLiveData<Int>(2)
+    private var _remainingCards = MutableLiveData<Int>(52)
     val remainingCards: LiveData<Int> get() = _remainingCards
 
 
 
     //    Methods
-    fun decrease() {
+    fun decreaseProgressBar() {
         val currentValue = _remainingCards.value ?: 0
 
         if (currentValue > 0) {
@@ -63,6 +62,10 @@ class CardViewModel: ViewModel() {
     }
 
     fun showTwoNewCards() {
+
+        if (deck.size < 2) {
+            return
+        }
 
         val leftCard = deck.random()
         deck.remove(leftCard)
@@ -80,13 +83,6 @@ class CardViewModel: ViewModel() {
         Log.e("!!!", "Left card suit= ${leftCard.suit}, value= ${leftCard.value}")
         Log.e("!!!", "Right card suit= ${rightCard.suit}, value= ${rightCard.value}")
 
-    }
-
-//    Implement comparison between cards values method
-
-    fun compareCards(leftCard: Card, rightCard: Card): Boolean {
-
-        return true
     }
 
 }

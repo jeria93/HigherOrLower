@@ -2,16 +2,6 @@ package com.example.higherorlower
 
 object DataManager {
 
-    var score = 0
-    var remainingCards = 52
-    //maps out the name of the card as a string to the resource file added
-    /*
-    "card_heart_1" to R.drawable.card_heart_1 = (key) to (value)
-    card_heart_1 = key
-    R.drawable.card_heart_1 = value
-    images are in resource file
-     */
-
     val cardMap = mapOf(
 
 //        Hearts(1-13)
@@ -75,7 +65,7 @@ object DataManager {
         "card_diamond_13" to R.drawable.card_diamond_13
     )
 
-
+//Creates a new shuffled deck
     fun createDeck() : MutableList<Card> {
 
 //    suits and values
@@ -99,27 +89,10 @@ object DataManager {
 //    Shows card image
     fun showCardImage(card: Card) : Int {
         val resourceName = "card_${card.suit}_${card.value}"
-
-
-//        if (image == null) {
-//            println("Image not found")
-//        } else {
-//            return image
-//        }
-//
-
-
-//                                       add a joker card instead,looks more nice
-        return cardMap[resourceName] ?: R.drawable.cards_deck //if card image not found, set a default card
+        return cardMap[resourceName] ?: R.drawable.joker //if card image not found, set a default card
     }
 
-//    override fun toString(): String {
-//        return "DataManager(currentCard=$currentCard, cardMap=$cardMap)"
-//    }
-
-//    new functions shows cards + string help, even out spaces, cards must show in order 1-13, no duplicates
-//    array has methods that shows things in order, numbers or letters
-
+//    Shows cards in order (images/suits/values 1-13)
     fun showCardsInOrder() : MutableList<Card> {
 
         val suits: List<String> = mutableListOf("club", "heart", "spade", "diamond")
