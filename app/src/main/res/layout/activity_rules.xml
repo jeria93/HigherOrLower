@@ -5,7 +5,7 @@
     android:id="@+id/game_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#36801D"
+    android:background="@color/light_green"
     tools:context=".RulesActivity">
 
     <LinearLayout
@@ -13,30 +13,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="25dp"
-        android:background="#36801D"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="@dimen/margin_small"
+        android:background="@color/light_green"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="32dp"
-            android:text="Higher or Lower"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="@string/higher_or_lower"
+            android:textSize="@dimen/text_size_medium"
             android:textColor="@android:color/black"
-            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:lineSpacingExtra="15dp"
-            android:text="The game uses a traditional deck of 52 cards\nThe deck is shuffled thoroughly\nGuess if the opposite deck is higher or lower,\nkeep going until the deck runs out of cards \nCard ranking: \nCards are ranked from high to low.\nKing (highest), Queen, Jack, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 Ace (lowest)"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:layout_marginTop="@dimen/margin_mini"
+            android:lineSpacingExtra="@dimen/margin_mini"
+            android:text="@string/text_rules"
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
 
@@ -44,12 +44,11 @@
         android:id="@+id/rv_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         tools:listitem="@layout/card_item"
-
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         >
 
 
