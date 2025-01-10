@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/game_main"
@@ -8,6 +9,7 @@
     android:background="@color/light_green"
     tools:context=".StartGameActivity">
 
+    <!-- Left Card -->
     <ImageView
         android:id="@+id/image_left_card"
         android:layout_width="wrap_content"
@@ -18,17 +20,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/card_diamond_10" />
 
+    <!-- Right Card -->
     <ImageView
         android:id="@+id/image_right_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin_mini"
-        app:layout_constraintTop_toTopOf="@+id/image_left_card"
-        app:layout_constraintBottom_toBottomOf="@+id/image_left_card"
+        app:layout_constraintTop_toTopOf="@id/image_left_card"
+        app:layout_constraintBottom_toBottomOf="@id/image_left_card"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/back_card" />
 
-
+    <!-- Title Text -->
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
@@ -36,7 +39,7 @@
         android:layout_marginTop="@dimen/margin_large"
         android:text="@string/higher_or_lower"
         android:textColor="@color/black"
-        android:textSize="@dimen/text_size_medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -62,8 +65,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_medium"
         android:text="@string/higher"
-        app:layout_constraintTop_toBottomOf="@+id/game_progressbar"
-        app:layout_constraintStart_toStartOf="@+id/btn_low" />
+        app:layout_constraintTop_toBottomOf="@id/game_progressbar"
+        app:layout_constraintStart_toStartOf="@id/btn_low" />
+
 
     <Button
         android:id="@+id/btn_low"
@@ -71,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_large"
         android:text="@string/lower"
-        app:layout_constraintTop_toBottomOf="@+id/btn_higher"
+        app:layout_constraintTop_toBottomOf="@id/btn_higher"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -82,8 +86,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_small"
         android:text=""
-        app:layout_constraintBaseline_toBaselineOf="@+id/tv_score"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_score"
         app:layout_constraintStart_toStartOf="parent" />
+
 
     <TextView
         android:id="@+id/tv_score"
@@ -93,6 +98,6 @@
         android:layout_marginBottom="@dimen/margin_medium"
         android:text="@string/dummy_data_score"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
+        app:layout_constraintStart_toEndOf="@id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
